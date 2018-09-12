@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TemplatingNano-bash(){
+if [ -n Filename ]; then
+        unset Filename;
+fi
+Filename="$1";
+touch $Filename;
+echo "#!/bin/bash" >> $Filename;
+echo " ";
+echo -e '############### $Filename ################' >> $Filename;
+echo -e "##" >> $Filename;
+echo -e -n "##   Date     : " >> $Filename; date >> $Filename;
+echo -e "##   File     : $Filename" >> $Filename;
+#cat ./type2 >> $Filename
+cat $TemplatingNano/.templates/bash.sh >> $Filename;
+echo '';
+echo '';
+echo -e "\e[32m$Filename\e[m has been created in \e[36m$PWD\e[m with bash template";
+unset Filename;
+}
